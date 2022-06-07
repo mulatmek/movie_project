@@ -1,0 +1,71 @@
+body {
+	background-color: #EAF6F6;
+  font-family: "Futara", sans-serif;
+}
+
+.signup {
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  border-radius: 10px;
+
+}
+
+h1 {
+  text-align: center;
+  padding-top: 15px;
+  color: #66BFBF;
+}
+
+h3 {
+  text-align: center;
+  color: #66BFBF;
+}
+
+form {
+  width: 300px;
+  margin: auto;
+}
+
+form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+}
+.start-button{ 
+  width: 320px;
+  height: 45px;
+  margin-top: 20px;
+  border: solid;
+  background-color: #08c697;
+  color: white;
+  font-size: 18px;
+  border-radius: 9px;
+}
+
+form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 9px;
+  outline: none;
+}
+
+p {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 16px;
+}
+
+.remember-me-button{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin-top: 20px;
+  vertical-align: bottom;
+  position: relative;
+  top: 3px;
+}
+
+
