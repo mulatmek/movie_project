@@ -68,8 +68,5 @@ app.get("/home",(req,res)=>{
            res.json(moviesArray);
         }
     });
-
-    
-    
 });
 app.listen(3000);
