@@ -2,17 +2,20 @@ const express = require("express");
 const bodyParser= require("body-parser");
 const { json } = require("express/lib/response");
 const mongoose = require("mongoose");
-var cors = require('cors');
+const path = require("path");
+var cors = require("cors");
+var request = require("request");
 
 const app = express();
 
 app.use(express.static("public"));
-app.use(cors({origin: 'http://localhost:3000'}));
-
+app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
+app.engine("html", require("ejs").renderFile);
 
+connectionString = "mongodb+srv://avivs:AvivS123@cluster0.xuj1qss.mongodb.net/DB";
+mongoose.connect(connectionString, {useNewUrlParser:true});
 
-mongoose.connect('mongodb+srv://avivs:AvivS123@cluster0.xuj1qss.mongodb.net/DB',{useNewUrlParser:true});
 const MovieSchema = {
     title: {type:String, unique: true},
     year: Number,
@@ -23,50 +26,55 @@ const MovieSchema = {
     reviews: String
 };
 
+const Movie = mongoose.model("Movies", MovieSchema);
 
-const Movie= mongoose.model("Movies",MovieSchema);
-const Harrypotter = new Movie({
-    title:"Harrypotter",
-    year:"1991",
-    genre:"mada bidiony",
-    description:"undinfinde",
-    image_url:"snjsf",
-    trailer_video:"asdaafa",
-    reviews:"kkfamf"
+app.get("/", (req, res)=> {
+    res.render(path.join(__dirname, "index.html"));
 })
 
-
-app.get("/",(req,res)=>{
-
-    res.sendFile(__dirname+"//index.html");
-})
-app.post("/",function(req,res){
-    const title = req.body.title;
-    const year = req.body.year;
-    const gener = req.body.gener;
-    const desc = req.body.desc;
-    const img = req.body.img;
-    const trailer= req.body.trailer;
-    const review = req.body.review;
+app.post("/add_movie", function(req, res) {
     const movie = new Movie({
-        title:title,
-        year:year,
-        genre:gener,
-        description:desc,
-        image_url:img,
-        trailer_video:trailer,
-        reviews:review
+        title: req.body.title,
+        year: req.body.year,
+        genre: req.body.genre,
+        description: req.body.desc,
+        image_url: req.body.img,
+        trailer_video: req.body.trailer,
+        reviews: req.body.review
     })
+
     movie.save();
-    console.log(title +"  sucssufully saved to db");
+    console.log(req.body.title + " movie succesfully saved to db");
     res.redirect("/");
 });
 
-app.get("/home",(req,res)=>{
-    Movie.find({},function(err,moviesArray){
-        if(!err){
+app.post("/search", function(req, res) {
+    var url = "https://www.omdbapi.com/?s="+req.body.search+"&apikey=cab8d7cf";
+    request(url, function(error, response, body){
+            if (!error && response.statusCode == 200) {
+                // console.log(body);
+                var data = JSON.parse(body);
+                res.render(path.join(__dirname, "views", "results.html"), {data: data});
+            }
+    });
+});
+
+app.get("/home", (req, res)=> {
+    Movie.find({}, function(err, moviesArray) {
+        if (!err) {
            res.json(moviesArray);
         }
     });
 });
-app.listen(3000);
+
+
+
+//NOTE this should be the last get function
+app.get("*", function(req, res){
+    res.render(path.join(__dirname, "views", "error.html"));
+});
+
+var port = 8080;
+app.listen(port, function() {
+    console.log("Server listening on port " + 8080);
+});
