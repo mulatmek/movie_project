@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="signUpStyle.css"><link/>
-  </head>
-  <body>
+<%- include("partials/header"); -%>
     <div class="signup">
       <h1>Ready to watch? </h1>
       <h3>Enter your email to create your account.</h3>
       <form action="/signUp" method="post" >
         <label>First Name</label>
-        <input type="text" placeholder="" name="firstName" />
+        <input type="text" placeholder="Frst Name" name="firstName" />
         <label>Last Name</label>
-        <input type="text" placeholder=""  name="lastName"/>
+        <input type="text" placeholder="Last Name"  name="lastName"/>
         <label>Email</label>
-        <input type="email" placeholder="" name="email" />
+        <input type="email" placeholder="Exemple@gmail.com" name="email" />
         <label>Password</label>
-        <input type="password" placeholder="" name="pass"/>
+        <input type="password" placeholder="Must contain [A-Z],[a-z],[0-9] ,8 Characters" name="pass"/>
         <label>Confirm Password</label>
         <input type="password" placeholder=""  name="repass"/>
-        <button type="submit" class="start-button" >Get Started</button>
+        <button  id ="start" type="submit" class="start-button" >Get Started</button>
       </form>
-      <p>
-        By clicking the Get Started button, you agree to our <br />
-        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
-      </p>
-    </div>
-  </body>
-</html>
-
+      <%- include("partials/footer"); -%>

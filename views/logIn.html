@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="stylesheet" href="signUpStyle.css" /><link/>
-</head>
-<body>
+<%- include("partials/header"); -%>
     <div class="login">
         <h1>Wellcome Back</h1>
         <h3>Please enter email and password to access to your account:</h3>
@@ -16,9 +7,7 @@
             <input type="email" placeholder="" name ="mail" />
             <label>Password</label>
             <input type="password" placeholder="" name="pass" />
-            <button type="submit" class="start-button" >Sign In</button>
+            <button id ="start"type="submit" class="start-button" >Sign In</button>
         </form>
     </div>
-    
-</body>
-</html>
+    <%- include("partials/footer"); -%>

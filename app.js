@@ -1,11 +1,14 @@
+require("dotenv").config()
 const express = require("express");
 const bodyParser= require("body-parser");
 const { json } = require("express/lib/response");
 const mongoose = require("mongoose");
 const path = require("path");
-var cors = require("cors");
-var request = require("request");
-var alert = require('alert');
+const cors = require("cors");
+const request = require("request");
+const alert = require('alert');
+const encrypt =require("mongoose-encryption");
+var loggedIn =false;
 
 
 
@@ -31,13 +34,15 @@ const MovieSchema = {
     reviews: String
 };
 //user
-const userSchema = {
+const userSchema = new mongoose.Schema({
     firstName:{type:"String",requierd:true},
     lastName:{type:"String",requierd:true},
     email:{type:"String",requierd:true,unique:true},
     pass:{type:"String",requierd:true},
     repass:{type:"String",requierd:true},
-}
+});
+//password encryption 
+userSchema.plugin(encrypt,{secret:process.env.SECRET,encryptedFields:["pass","repass"]});
 
 const Movie = mongoose.model("Movies", MovieSchema);
 const User = mongoose.model("User", userSchema);
@@ -74,11 +79,17 @@ app.post("/search", function(req, res) {
 });
 
 app.get("/home", (req, res)=> {
-    Movie.find({}, function(err, moviesArray) {
-        if (!err) {
-           res.json(moviesArray);
-        }
-    });
+    // Movie.find({}, function(err, moviesArray) {
+    //     if (!err) {
+    //        res.json(moviesArray);
+    //     }
+    // });
+    if(loggedIn)
+        res.render("Home.html");
+    else{
+        alert("you must log in first")
+        res.redirect("/login")
+    }
 });
 //user connection login logout 
 app.route("/signUp")
@@ -118,10 +129,11 @@ app.route("/login")
 .post(function(req,res){
     const mail = req.body.mail;
     const pass = req.body.pass;
-    User.findOne({email:mail},function(err,foundUser){
+    User.findOne({email:mail.toLowerCase()},function(err,foundUser){
         console.log(foundUser);
         if(foundUser){
             if(foundUser.pass===pass){
+                loggedIn=true;
                 res.redirect("home");
             }
             else{
