@@ -5,19 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
-    <link rel="stylesheet" href="lib/signUpStyle.css" /><link/>
+    <link rel="stylesheet" href="signUpStyle.css" /><link/>
 </head>
 <body>
     <div class="login">
         <h1>Wellcome Back</h1>
         <h3>Please enter email and password to access to your account:</h3>
-        <form>
+        <form action="/login" method="post">
             <label>Email</label>
-            <input type="email" placeholder="" />
+            <input type="email" placeholder="" name ="mail" />
             <label>Password</label>
-            <input type="password" placeholder="" />
-            <button class="start-button" >Sign In</button>
-            <input class="remember-me-button" type="checkbox"> Remember me </input>
+            <input type="password" placeholder="" name="pass" />
+            <button type="submit" class="start-button" >Sign In</button>
         </form>
     </div>
     

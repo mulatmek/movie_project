@@ -2,24 +2,24 @@
 <html lang="en">
   <head>
     <title>Sign Up</title>
-    <link rel="stylesheet" href="lib/signUpStyle.css" /><link/>
+    <link rel="stylesheet" href="signUpStyle.css"><link/>
   </head>
   <body>
     <div class="signup">
       <h1>Ready to watch? </h1>
       <h3>Enter your email to create your account.</h3>
-      <form>
+      <form action="/signUp" method="post" >
         <label>First Name</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder="" name="firstName" />
         <label>Last Name</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder=""  name="lastName"/>
         <label>Email</label>
-        <input type="email" placeholder="" />
+        <input type="email" placeholder="" name="email" />
         <label>Password</label>
-        <input type="password" placeholder="" />
+        <input type="password" placeholder="" name="pass"/>
         <label>Confirm Password</label>
-        <input type="password" placeholder="" />
-        <button class="start-button" >Get Started</button>
+        <input type="password" placeholder=""  name="repass"/>
+        <button type="submit" class="start-button" >Get Started</button>
       </form>
       <p>
         By clicking the Get Started button, you agree to our <br />
