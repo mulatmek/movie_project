@@ -8,6 +8,7 @@ const cors = require("cors");
 const request = require("request");
 const alert = require('alert');
 const encrypt =require("mongoose-encryption");
+const { use } = require("express/lib/application");
 var loggedIn =false;
 
 
@@ -107,11 +108,11 @@ app.route("/signUp")
     alert("Passwords do NOT match");
     res.redirect("/signUp")
    }
-   if(!strongRegex.test(pass)){
+  else  if(!strongRegex.test(pass)){
     alert("Passwords must contains at list 8 characters and 1 speacieal letter");
     res.redirect("/signUp")
    }
-   const user = new User({
+  else{ const user = new User({
     firstName:firstName,
      lastName:lastName,
      email:email,
@@ -121,6 +122,7 @@ app.route("/signUp")
    user.save();
    alert("sign up successfully ");
    res.redirect("/login");
+ }
 });
 app.route("/login")
 .get(function(req,res){
@@ -129,7 +131,7 @@ app.route("/login")
 .post(function(req,res){
     const mail = req.body.mail;
     const pass = req.body.pass;
-    User.findOne({email:mail.toLowerCase()},function(err,foundUser){
+    User.findOne({email:mail},function(err,foundUser){
         console.log(foundUser);
         if(foundUser){
             if(foundUser.pass===pass){
