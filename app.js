@@ -92,6 +92,12 @@ app.get("/home", (req, res)=> {
         res.redirect("/login")
     }
 });
+app.post("/home",(req,res)=>{
+    loggedIn=false;
+    setTimeout(()=>{
+        res.redirect("login");
+    },2000);
+});
 //user connection login logout 
 app.route("/signUp")
 .get(function(req,res){
@@ -119,10 +125,12 @@ app.route("/signUp")
      pass:pass,
      repass:repass
    });
-   user.save();
-   alert("sign up successfully ");
-   res.redirect("/login");
- }
+    user.save();
+    alert("sign up successfully ");
+    setTimeout(()=>{
+        res.redirect("/login");
+    },2000);
+    }
 });
 app.route("/login")
 .get(function(req,res){
@@ -136,7 +144,9 @@ app.route("/login")
         if(foundUser){
             if(foundUser.pass===pass){
                 loggedIn=true;
-                res.redirect("home");
+                setTimeout(()=>{
+                    res.redirect("home");
+                },2000);
             }
             else{
                 alert("Wrong Password");

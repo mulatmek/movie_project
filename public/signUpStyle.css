@@ -2,6 +2,10 @@ body {
 	background-color: #EAF6F6;
   font-family: "Futara", sans-serif;
 }
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
 
 .signup {
   width: 400px;
@@ -12,6 +16,7 @@ body {
 }
 
 h1 {
+  text-shadow:2px 2px  #171818 ;
   text-align: center;
   padding-top: 15px;
   color: #66BFBF;
@@ -69,6 +74,20 @@ p {
 }
 
 #start{
+  
   width: 60%;
   margin-left: 55px;
+}
+.footer{
+  font-family:myFirstFont ;
+}
+#end{
+  width: 70px;
+  height: 30px;
+  margin-top: 10px;
+  border: solid;
+  background-color: #08c697;
+  color: white;
+  font-size: 15px;
+  border-radius: 9px;
 }
