@@ -80,11 +80,6 @@ app.post("/search", function(req, res) {
 });
 
 app.get("/home", (req, res)=> {
-    // Movie.find({}, function(err, moviesArray) {
-    //     if (!err) {
-    //        res.json(moviesArray);
-    //     }
-    // });
     if(loggedIn)
         res.render("Home.html");
     else{
@@ -156,7 +151,7 @@ app.route("/login")
         }
         else{
             alert("User does not exist");
-            res.redirect("/login");
+            res.redirect("Home.html");
         }
     })
 
