@@ -1,168 +1,47 @@
-require("dotenv").config()
-const express = require("express");
-const bodyParser= require("body-parser");
-const { json } = require("express/lib/response");
-const mongoose = require("mongoose");
 const path = require("path");
-const cors = require("cors");
-const request = require("request");
-const alert = require('alert');
-const encrypt =require("mongoose-encryption");
-const { use } = require("express/lib/application");
-var loggedIn =false;
-
-
-
+const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const session = require("express-session");
+dotenv.config();
+const passport = require("passport");
+const {loginCheck} = require("./authentication/passport");
+loginCheck(passport);
 
-app.use(express.static("public"));
-app.use(cors());
-app.use(bodyParser.urlencoded({extended:true}));
-app.engine("html", require("ejs").renderFile);
-app.set('view engine','ejs');
-
+//mongodb connection
 connectionString = "mongodb+srv://avivs:AvivS123@cluster0.xuj1qss.mongodb.net/DB";
-mongoose.connect(connectionString, {useNewUrlParser:true});
+mongoose.connect(connectionString, {useNewUrlParser:true})
+.then(() => console.log('connected MongoDB database'))
+.catch(err => console.log(err));
 
-//movie 
-const MovieSchema = {
-    title: {type:String, unique: true},
-    year: Number,
-    genre: String,
-    description: String,
-    image_url: String,
-    trailer_video: String,
-    reviews: String
-};
-//user
-const userSchema = new mongoose.Schema({
-    firstName:{type:"String",requierd:true},
-    lastName:{type:"String",requierd:true},
-    email:{type:"String",requierd:true,unique:true},
-    pass:{type:"String",requierd:true},
-    repass:{type:"String",requierd:true},
-});
-//password encryption 
-userSchema.plugin(encrypt,{secret:process.env.SECRET,encryptedFields:["pass","repass"]});
+app.set("view engine", "ejs");
 
-const Movie = mongoose.model("Movies", MovieSchema);
-const User = mongoose.model("User", userSchema);
+//BodyParsing
+app.use(express.urlencoded({ extended: false }));
 
+app.use(session({
+    secret:'oneboy',
+    saveUninitialized: true,
+    resave: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//routes
+app.use('/', require('./routes/login'));
+
+//default home page
 app.get("/", (req, res)=> {
-    res.render(path.join(__dirname, "index.html"));
+    res.render(path.join(__dirname, "views", "home.ejs"));
 })
 
-app.post("/add_movie", function(req, res) {
-    const movie = new Movie({
-        title: req.body.title,
-        year: req.body.year,
-        genre: req.body.genre,
-        description: req.body.desc,
-        image_url: req.body.img,
-        trailer_video: req.body.trailer,
-        reviews: req.body.review
-    })
-
-    movie.save();
-    console.log(req.body.title + " movie succesfully saved to db");
-    res.redirect("/");
-});
-
-app.post("/search", function(req, res) {
-    var url = "https://www.omdbapi.com/?s="+req.body.search+"&apikey=cab8d7cf";
-    request(url, function(error, response, body){
-            if (!error && response.statusCode == 200) {
-                // console.log(body);
-                var data = JSON.parse(body);
-                res.render(path.join(__dirname, "views", "results.html"), {data: data});
-            }
-    });
-});
-
-app.get("/home", (req, res)=> {
-    if(loggedIn)
-        res.render("Home.html");
-    else{
-        alert("you must log in first")
-        res.redirect("/login")
-    }
-});
-app.post("/home",(req,res)=>{
-    loggedIn=false;
-    setTimeout(()=>{
-        res.redirect("login");
-    },2000);
-});
-//user connection login logout 
-app.route("/signUp")
-.get(function(req,res){
-    res.render("signUp.html");
-})
-.post(function(req,res){
-   const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-   const firstName= req.body.firstName;
-   const lastName= req.body.lastName;
-   const email= req.body.email;
-   const pass= req.body.pass;
-   const repass= req.body.repass;
-   if (pass!=repass){
-    alert("Passwords do NOT match");
-    res.redirect("/signUp")
-   }
-  else  if(!strongRegex.test(pass)){
-    alert("Passwords must contains at list 8 characters and 1 speacieal letter");
-    res.redirect("/signUp")
-   }
-  else{ const user = new User({
-    firstName:firstName,
-     lastName:lastName,
-     email:email,
-     pass:pass,
-     repass:repass
-   });
-    user.save();
-    alert("sign up successfully ");
-    setTimeout(()=>{
-        res.redirect("/login");
-    },2000);
-    }
-});
-app.route("/login")
-.get(function(req,res){
-    res.render("logIn.html");
-})
-.post(function(req,res){
-    const mail = req.body.mail;
-    const pass = req.body.pass;
-    User.findOne({email:mail},function(err,foundUser){
-        console.log(foundUser);
-        if(foundUser){
-            if(foundUser.pass===pass){
-                loggedIn=true;
-                setTimeout(()=>{
-                    res.redirect("home");
-                },2000);
-            }
-            else{
-                alert("Wrong Password");
-                res.redirect("/login");
-            }
-
-        }
-        else{
-            alert("User does not exist");
-            res.redirect("Home.html");
-        }
-    })
-
-});
-
-//NOTE this should be the last get function
 app.get("*", function(req, res){
-    res.render(path.join(__dirname, "views", "error.html"));
+    res.render(path.join(__dirname, "views", "error.ejs"));
 });
 
-var port = 8080;
+const port = 8080;
 app.listen(port, function() {
-    console.log("Server listening on port " + 8080);
+    console.log("Server listening on port " + port);
 });
