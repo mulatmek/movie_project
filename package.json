@@ -1,17 +1,22 @@
 {
+  "name": "mvc_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "develop": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "alert": "^5.0.12",
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
-    "dot": "^1.1.3",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
-    "env": "^0.0.2",
     "express": "^4.18.1",
-    "mongoose": "^6.3.5",
-    "mongoose-encrypt": "^0.0.1-alpha.3",
-    "mongoose-encryption": "^2.1.2",
-    "popups": "^1.1.3",
-    "request": "^2.88.2"
+    "express-session": "^1.17.3",
+    "mongoose": "^6.5.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }
