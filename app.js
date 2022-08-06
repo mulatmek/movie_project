@@ -36,16 +36,7 @@ app.use(function (req, res, next) {
 });
 
 //routes
-app.use('/', require('./routes/login'));
-
-//default home page
-app.get("/", (req, res)=> {
-    res.render(path.join(__dirname, "views", "home.ejs"));
-})
-
-app.get("*", function(req, res){
-    res.render(path.join(__dirname, "views", "error.ejs"));
-});
+app.use('/', require('./routes/router'));
 
 const port = 8080;
 app.listen(port, function() {

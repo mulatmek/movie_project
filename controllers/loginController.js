@@ -90,5 +90,5 @@ module.exports = {
     loginView, 
     registerUser,
     loginUser,
-    logoutView
+    logoutView,
 };
