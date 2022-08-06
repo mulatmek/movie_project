@@ -1,3 +1,4 @@
+//check if user is logged in, if he isn't - redirect to /login page
 const protectRoute = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();

@@ -29,6 +29,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//indicate whether or not a user is logged in for templates
+app.use(function (req, res, next) {
+    res.locals.loggedIn = req.isAuthenticated();
+    next();
+});
+
 //routes
 app.use('/', require('./routes/login'));
 

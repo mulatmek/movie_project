@@ -17,7 +17,12 @@
         <li id="home"><a href="/">HOME</a></li>
         <li id="about"><a href="/about">ABOUT US</a></li>
         <li id="contact"><a href="/contact">CONTACT US</a></li>
-        <li id="login"><a href="/login">Log In</a></li>
-        <li id="sigh up"><a href="/register">Sign Up</a></li>
+        <% if (loggedIn) { %>
+          <li id="dashboard"><a href="/dashboard">DASHBOARD</a></li>
+          <li id="logout"><a href="/logout">Log Out</a></li>
+        <% } else { %>  
+          <li id="login"><a href="/login">Log In</a></li>
+          <li id="sigh up"><a href="/register">Sign Up</a></li>
+        <% } %>
       </a>
     </nav>
