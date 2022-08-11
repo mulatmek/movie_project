@@ -41,6 +41,7 @@ const registerUser = (req, res) => {
                     lastName,
                     email,
                     password,
+                    isAdmin: false
                 });
         
                 //Password Hashing

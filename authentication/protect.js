@@ -7,6 +7,14 @@ const protectRoute = (req, res, next) => {
     res.redirect('/login');
 }
 
+const isAdmin = (req, res, next) => {
+    if (req.isAuthenticated() && (req.user.isAdmin)) {
+        return next();
+    }
+    console.log('Only admins allowed');
+    res.redirect('/dashboard');
+}
+
 const allowIf = (req, res, next) => {
     if (!req.isAuthenticated()) {
         return next();
@@ -17,4 +25,5 @@ const allowIf = (req, res, next) => {
 module.exports = {
     protectRoute,
     allowIf,
+    isAdmin
 };

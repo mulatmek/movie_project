@@ -10,7 +10,7 @@ const {loginCheck} = require("./authentication/passport");
 loginCheck(passport);
 
 //mongodb connection
-connectionString = "mongodb+srv://avivs:AvivS123@cluster0.xuj1qss.mongodb.net/DB";
+connectionString = "mongodb+srv://aviv:Aa123456@cluster0.xuj1qss.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(connectionString, {useNewUrlParser:true})
 .then(() => console.log('connected MongoDB database'))
 .catch(err => console.log(err));
