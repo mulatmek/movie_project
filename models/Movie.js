@@ -1,15 +1,23 @@
 const mongoose = require("mongoose");
 
-//need to make sure every movie has ID because we will allow accessing a movie by /movie=<id>
-const MovieSchema = {
-    title: {type:String, unique: true},
-    year: Number,
-    genre: String,
-    description: String,
-    image_url: String,
-    trailer_video: String,
-    reviews: String
-};
+const MovieSchema = new mongoose.Schema({
+    id: {type: Number, unique: true},
+    title: {type: String, unique: true},
+    year: {type: Number},
+    genre: {type: String},
+    description: {type: String},
+    image_url: {type: String},
+    trailer_video: {type: String},
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Reviews'
+        }
+    ]
+});
 
 const Movie = mongoose.model("Movie", MovieSchema);
-module.exports = Movie;
+module.exports = {
+    mongoose,
+    Movie
+}
