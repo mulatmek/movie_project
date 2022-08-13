@@ -4,8 +4,12 @@ const { movieView } = require('../controllers/movieController');
 const { homeView, errorView } = require('../controllers/defaultController');
 const { protectRoute, isAdmin } = require("../authentication/protect");
 const { dashboardView, adminView } = require("../controllers/dashboardController");
+const { addMovie } = require("../controllers/databaseController");
 
 const router = express.Router();
+
+//databaseController routes
+router.post('/add-movie', isAdmin, addMovie); //change this to be only for admins when done
 
 //loginController routes
 router.get('/register', registerView);
@@ -14,6 +18,7 @@ router.get('/logout', logoutView);
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/admin', isAdmin, adminView)
+
 //dashboardController routes
 router.get("/dashboard", protectRoute, dashboardView);
 

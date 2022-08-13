@@ -1,18 +1,7 @@
-const Movie = require('../models/Movie');
+const { Movie } = require('../models/Movie');
 
-function getValueForNextSequence(sequenceOfName) {
-    var sequenceDoc = Movie.mongoose.sample.findAndModify({ //check how to reach sample collection
-        query: {_id: sequenceOfName},
-        update: {$inc: {sequence_value: 1}},
-        new: true
-    });
-
-    return sequenceDoc.sequence_value;
-}
-
-const createMovie = async (body) => {
-    const movie = new Movie({
-        _id: getValueForNextSequence("item_id"),
+const createMovie = (body) => {
+    const newMovie = new Movie({
         title: body.title,
         year: body.year,
         genre: body.genre,
@@ -21,7 +10,7 @@ const createMovie = async (body) => {
         trailerVideo: body.trailerVideo
     });
 
-    return await movie.save();
+    return newMovie.save();
 };
 
 const getMovieById = async (id) => {
