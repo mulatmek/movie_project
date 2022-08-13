@@ -9,7 +9,7 @@ const { addMovie } = require("../controllers/databaseController");
 const router = express.Router();
 
 //databaseController routes
-router.post('/add-movie', isAdmin, addMovie); //change this to be only for admins when done
+router.post('/add-movie', isAdmin, addMovie);
 
 //loginController routes
 router.get('/register', registerView);
