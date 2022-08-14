@@ -1,21 +1,20 @@
 const express = require('express');
-const { registerView, loginView, logoutView, registerUser, loginUser } = require('../controllers/loginController');
+const { registerView, registerValidation, loginView, logoutView, registerUser, loginUser } = require('../controllers/loginController');
 const { movieView } = require('../controllers/movieController');
 const { homeView, errorView } = require('../controllers/defaultController');
 const { protectRoute, isAdmin } = require("../authentication/protect");
 const { dashboardView, adminView } = require("../controllers/dashboardController");
-const { addMovie } = require("../controllers/databaseController");
-
+const { addMovie, movieValidation } = require("../controllers/databaseController");
 const router = express.Router();
 
 //databaseController routes
-router.post('/add-movie', isAdmin, addMovie);
+router.post('/add-movie', [movieValidation, isAdmin], addMovie);
 
 //loginController routes
 router.get('/register', registerView);
 router.get('/login', loginView);
 router.get('/logout', logoutView);
-router.post('/register', registerUser);
+router.post('/register', registerValidation(), registerUser);
 router.post('/login', loginUser);
 router.get('/admin', isAdmin, adminView)
 
