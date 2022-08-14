@@ -13,12 +13,12 @@ const createMovie = (body) => {
     return newMovie.save();
 };
 
-const getMovieById = async (id) => {
-    return await Movie.findById(id);
+const getMovieById = (id) => {
+    return Movie.findOne({id: id});
 };
 
-const getMovieByTitle = async (title) => {
-    return await Movie.find({'title': {$regex: `.*${title}.*`, $options:'i'}});
+const getMovieByTitle = (title) => {
+    return Movie.find({'title': {$regex: `.*${title}.*`, $options:'i'}});
 };
 
 const getMoviesByGenre = async (genre) => {
