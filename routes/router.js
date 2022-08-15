@@ -4,12 +4,12 @@ const { movieView } = require('../controllers/movieController');
 const { homeView, errorView } = require('../controllers/defaultController');
 const { protectRoute, isAdmin } = require("../authentication/protect");
 const { dashboardView, adminView } = require("../controllers/dashboardController");
-const { addMovie, movieValidation } = require("../controllers/databaseController");
+const { addMovie,removeMovie, movieValidation } = require("../controllers/databaseController");
 const router = express.Router();
 
 //databaseController routes
 router.post('/add-movie', [movieValidation, isAdmin], addMovie);
-
+router.post('/delete-movie',[movieValidation, isAdmin],removeMovie);
 //loginController routes
 router.get('/register', registerView);
 router.get('/login', loginView);

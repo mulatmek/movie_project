@@ -7,13 +7,15 @@ const addMovie = (req, res) => {
     MovieServices.createMovie(req.body);
     res.redirect("/admin");
 }
-const deleteMovie = (req,res)=>{
-    
- //   MovieServices.deleteMovie(id);
-
+const removeMovie = (req,res)=>{
+    const id = req.body.delete;
+    console.log(id);
+    MovieServices.deleteMovie(id);
+    res.redirect("/admin");
 }
 
 module.exports = {
     addMovie,
+    removeMovie,
     movieValidation,
 };

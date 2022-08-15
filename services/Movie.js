@@ -11,7 +11,6 @@ const createMovie = (body) => {
     });
     if(Movie.findOne({title:body.title})){
         console.log("movies is allredy exsist...")
-        
     }else
         return newMovie.save((err)=>{
             if(!err){
@@ -39,7 +38,19 @@ const getReviewsByMovieId = async (id) => {
 };
 
 const deleteMovie =  (id) => {
-   Movie.findOneAndDelete({id:id});
+    if(Movie.findOne({id:id})){
+        console.log(id);
+        Movie.findOneAndDelete({id:id},(err)=>{
+                if(!err){
+                    console.log("movie deleted from db");
+                }else{
+                    console.log(err);
+                }
+        });
+    }else{
+        console.log("movie not exsist...");
+    }
+    
 };
 
 const removeMovieReviews = async (review_ids) => {
