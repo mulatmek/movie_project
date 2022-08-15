@@ -9,8 +9,17 @@ const createMovie = (body) => {
         imageUrl: body.imageUrl,
         trailerVideo: body.trailerVideo
     });
-
-    return newMovie.save();
+    if(Movie.findOne({title:body.title})){
+        console.log("movies is allredy exsist...")
+        
+    }else
+        return newMovie.save((err)=>{
+            if(!err){
+                console.log("Movie saved ");
+            }else{
+                console.log(err);
+            }
+        });
 };
 
 const getMovieById = (id) => {
@@ -29,15 +38,8 @@ const getReviewsByMovieId = async (id) => {
     return await Movie.findById(id, {'_id':0, 'reviews':1});
 };
 
-const deleteMovie = async (id) => {
-    const movie = await getMovieById(id);
-
-    if (!movie)
-        return null;
-
-    await movie.remove();
-    
-    return movie;
+const deleteMovie =  (id) => {
+   Movie.findOneAndDelete({id:id});
 };
 
 const removeMovieReviews = async (review_ids) => {
