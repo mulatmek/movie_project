@@ -9,7 +9,6 @@ const createMovie = (body) => {
         imageUrl: body.imageUrl,
         trailerVideo: body.trailerVideo
     });
-
     return newMovie.save();
 };
 
@@ -18,32 +17,16 @@ const getMovieById = (id) => {
 };
 
 const getMovieByTitle = (title) => {
-    return Movie.find({'title': {$regex: `.*${title}.*`, $options:'i'}});
+    return Movie.find({'title': title});
 };
 
-const getMoviesByGenre = async (genre) => {
-    return await Movie.find({'genre': {$regex: `.*${genre}.*`, $options:'i'}});
-};
-
-const getReviewsByMovieId = async (id) => {
-    return await Movie.findById(id, {'_id':0, 'reviews':1});
+const getMoviesByGenre = (genre) => {
+    return Movie.find({'genre': {$regex: `.*${genre}.*`, $options:'i'}});
 };
 
 const deleteMovie = async (id) => {
-    const movie = await getMovieById(id);
-
-    if (!movie)
-        return null;
-
-    await movie.remove();
-    
-    return movie;
+    return await Movie.findOneAndDelete({'id': id});
 };
-
-const removeMovieReviews = async (review_ids) => {
-    return Movie.update({}, {$pull:{"reviews":{$in:review_ids}}},{multi:true});
-};
-
 
 const countMovies = async () => {
     return await Movie.countDocuments({})
@@ -53,7 +36,7 @@ const countByGenre = async () => {
     return Movie.aggregate([
         {
             $group: {
-                _id: "$genre",
+                _id: {'genre': {$toLower: "$genre"}},
                 count: {$sum: 1}
             }
         },
@@ -66,10 +49,9 @@ const countByGenre = async () => {
     ]);
 };
 
-
 const updateMovie = async (id, body) => {
     const movie = await getMovieById(id);
-    if (!movie)
+    if (!movie.length)
         return null;
 
     movie.title = body.title;
@@ -82,32 +64,13 @@ const updateMovie = async (id, body) => {
     return movie;
 };
 
-const updateReviewOfMovie = async (id, review) => {
-    const movie = await getMovieById(id);
-    if (!movie)
-        return null;
-
-    if (!review)
-        return null
-
-    if (movie.reviews.indexOf(review._id) === -1) {
-        movie.reviews.push(review._id);
-    }
-    await movie.save();
-
-    return movie;
-};
-
 module.exports = {
     createMovie,
     getMovieById,
     getMovieByTitle,
     getMoviesByGenre,
-    getReviewsByMovieId,
     deleteMovie,
-    removeMovieReviews,
     countMovies,
     countByGenre,
     updateMovie,
-    updateReviewOfMovie,
 }

@@ -1,5 +1,4 @@
 const MovieServices = require("../services/Movie");
-const Movie = require("../models/Movie");
 const { body, validationResult } = require('express-validator');
 const movieValidation = body('title').isLength({ min: 1 }).withMessage('Movie title cannot be empty');
 
@@ -7,7 +6,7 @@ const addMovie = (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) { //No errors were found. Passed express-validator Validation!
         MovieServices.getMovieByTitle(req.body.title).then((movie) => {
-            if (movie) {
+            if (movie.length) {
                 console.log("A movie with the same title already exists. title has to be unique");
                 res.redirect('/admin');
             }
