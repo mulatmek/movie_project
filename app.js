@@ -8,8 +8,7 @@ dotenv.config();
 const passport = require("passport");
 const {loginCheck} = require("./authentication/passport");
 loginCheck(passport);
-
-//mongodb connection
+//stam comment
 connectionString = "mongodb+srv://aviv:Aa123456@cluster0.xuj1qss.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(connectionString, {useNewUrlParser:true})
 .then(() => console.log('connected MongoDB database'))
