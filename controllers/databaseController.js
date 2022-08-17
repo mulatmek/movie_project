@@ -7,7 +7,7 @@ const addMovie = (req, res) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) { //No errors were found. Passed express-validator Validation!
         MovieServices.getMovieByTitle(req.body.title).then((movie) => {
-            if (movie) {
+            if (movie.length != 0) {
                 console.log("A movie with the same title already exists. title has to be unique");
                 res.redirect('/admin');
             }

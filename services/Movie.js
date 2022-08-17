@@ -18,7 +18,7 @@ const getMovieById = (id) => {
 };
 
 const getMovieByTitle = (title) => {
-    return Movie.find({'title': {$regex: `.*${title}.*`, $options:'i'}});
+    return Movie.find({'title': title});
 };
 
 const getMoviesByGenre = async (genre) => {
