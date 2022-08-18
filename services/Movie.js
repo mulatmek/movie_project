@@ -9,7 +9,6 @@ const createMovie = (body) => {
         imageUrl: body.imageUrl,
         trailerVideo: body.trailerVideo
     });
-    return newMovie.save();
 };
 
 const getMovieById = (id) => {
@@ -24,8 +23,22 @@ const getMoviesByGenre = (genre) => {
     return Movie.find({'genre': {$regex: `.*${genre}.*`, $options:'i'}});
 };
 
-const deleteMovie = async (id) => {
-    return await Movie.findOneAndDelete({'id': id});
+
+const deleteMovie =  (id) => {
+    if(Movie.findOne({id:id})){
+        console.log(id);
+        Movie.findOneAndDelete({id:id},(err)=>{
+                if(!err){
+                    console.log("movie deleted from db");
+                }else{
+                    console.log(err);
+                }
+        });
+    }else{
+        console.log("movie not exsist...");
+    }
+    
+
 };
 
 const countMovies = async () => {
