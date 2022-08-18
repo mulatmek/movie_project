@@ -9,16 +9,6 @@ const createMovie = (body) => {
         imageUrl: body.imageUrl,
         trailerVideo: body.trailerVideo
     });
-    if(Movie.findOne({title:body.title})){
-        console.log("movies is allredy exsist...")
-    }else
-        return newMovie.save((err)=>{
-            if(!err){
-                console.log("Movie saved ");
-            }else{
-                console.log(err);
-            }
-        });
 };
 
 const getMovieById = (id) => {
@@ -26,16 +16,13 @@ const getMovieById = (id) => {
 };
 
 const getMovieByTitle = (title) => {
-    return Movie.find({'title': {$regex: `.*${title}.*`, $options:'i'}});
+    return Movie.find({'title': title});
 };
 
-const getMoviesByGenre = async (genre) => {
-    return await Movie.find({'genre': {$regex: `.*${genre}.*`, $options:'i'}});
+const getMoviesByGenre = (genre) => {
+    return Movie.find({'genre': {$regex: `.*${genre}.*`, $options:'i'}});
 };
 
-const getReviewsByMovieId = async (id) => {
-    return await Movie.findById(id, {'_id':0, 'reviews':1});
-};
 
 const deleteMovie =  (id) => {
     if(Movie.findOne({id:id})){
@@ -51,12 +38,8 @@ const deleteMovie =  (id) => {
         console.log("movie not exsist...");
     }
     
-};
 
-const removeMovieReviews = async (review_ids) => {
-    return Movie.update({}, {$pull:{"reviews":{$in:review_ids}}},{multi:true});
 };
-
 
 const countMovies = async () => {
     return await Movie.countDocuments({})
@@ -66,7 +49,7 @@ const countByGenre = async () => {
     return Movie.aggregate([
         {
             $group: {
-                _id: "$genre",
+                _id: {'genre': {$toLower: "$genre"}},
                 count: {$sum: 1}
             }
         },
@@ -79,10 +62,9 @@ const countByGenre = async () => {
     ]);
 };
 
-
 const updateMovie = async (id, body) => {
     const movie = await getMovieById(id);
-    if (!movie)
+    if (!movie.length)
         return null;
 
     movie.title = body.title;
@@ -95,32 +77,13 @@ const updateMovie = async (id, body) => {
     return movie;
 };
 
-const updateReviewOfMovie = async (id, review) => {
-    const movie = await getMovieById(id);
-    if (!movie)
-        return null;
-
-    if (!review)
-        return null
-
-    if (movie.reviews.indexOf(review._id) === -1) {
-        movie.reviews.push(review._id);
-    }
-    await movie.save();
-
-    return movie;
-};
-
 module.exports = {
     createMovie,
     getMovieById,
     getMovieByTitle,
     getMoviesByGenre,
-    getReviewsByMovieId,
     deleteMovie,
-    removeMovieReviews,
     countMovies,
     countByGenre,
     updateMovie,
-    updateReviewOfMovie,
 }
