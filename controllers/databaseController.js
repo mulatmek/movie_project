@@ -7,7 +7,7 @@ const addMovie = (req, res) => {
     res.redirect("/admin");
 }
 const removeMovie = (req, res) => {
-    MovieServices.deleteMovie(id);
+    MovieServices.deleteMovie(req.body.delete);
     res.redirect("/admin");
 }
 
