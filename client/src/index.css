@@ -72,6 +72,10 @@ header nav > *:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px #000;
 }
+
+.error-page,
+.movie-page,
+.home-page,
 .login-page {
   flex: 1;
   display: grid;

@@ -2,12 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "./context";
 
 import MainHeader from "./components/MainHeader";
-import Login from "./views/Login";
-import HomePage from "./views/HomePage";
+import MainFooter from "./components/MainFooter";
 import UserMsg from "./components/UserMsg";
+import HomePage from "./views/HomePage";
+import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
 import AdminPage from "./views/AdminPage";
 import MovieDetails from "./views/MovieDetails";
+import ErrorPage from "./views/ErrorPage";
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
-          {/* <Route path="/**" element={<Dashboard />} /> */}
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
+        <MainFooter />
         <UserMsg />
       </Provider>
     </BrowserRouter>

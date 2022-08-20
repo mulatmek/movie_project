@@ -39,7 +39,7 @@ const HomePage = () => {
   });
 
   return (
-    <div className="Statistics">
+    <div className="home-page">
       <div className="totalUsers">
         There are {countUsers} registered users in our website!
       </div>
@@ -51,7 +51,7 @@ const HomePage = () => {
       <div className="CountByGenre">
         {countBy.length &&
           countBy.map((item) => (
-            <p>
+            <p key={item._id.genre}>
               Genre: {item._id.genre}, number of movies: {item.count}
             </p>
           ))}
