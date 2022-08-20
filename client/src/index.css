@@ -62,7 +62,7 @@ header nav > *:hover {
   text-decoration: underline;
 }
 
-.user-msg{
+.user-msg {
   position: fixed;
   top: 70px;
   left: 10px;
@@ -118,10 +118,10 @@ header nav > *:hover {
 }
 
 .admin-page ul {
-  width: 80vw;  
+  width: 80vw;
 }
 
-.admin-page ul >* {
+.admin-page ul > * {
   list-style: none;
   padding: 5px;
   border-bottom: 1px solid black;
@@ -138,7 +138,7 @@ header nav > *:hover {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background: white;
   border-radius: 8px;
   box-shadow: 0 0 10px;

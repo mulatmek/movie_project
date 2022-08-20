@@ -45,7 +45,7 @@ const countMovies = async () => {
 };
 
 const countByGenre = async () => {
-  return Movie.aggregate([
+  return await Movie.aggregate([
     {
       $group: {
         _id: { genre: { $toLower: "$genre" } },
@@ -62,7 +62,7 @@ const countByGenre = async () => {
 };
 
 const updateMovie = async (id, body) => {
-  return await Movie.findOneAndUpdate({id}, body)
+  return await Movie.findOneAndUpdate({ id }, body);
 };
 
 module.exports = {

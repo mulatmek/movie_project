@@ -77,5 +77,5 @@ module.exports = {
   deleteMovie,
   addMovie,
   editMovie,
-  getMovieById
+  getMovieById,
 };

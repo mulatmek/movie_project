@@ -69,7 +69,7 @@ const AdminPage = () => {
         description: "",
         genre: null,
         trailerVideo: "",
-      })
+      });
     } catch (e) {}
   };
 
@@ -98,19 +98,24 @@ const AdminPage = () => {
       </ul>
       {(isAddMovie || isEditMovie) && (
         <div className="add-movie-modal">
-          <button className="close-modal" onClick={() => {
-            setIsEditMovie(false)
-            setIsAddMovie(false)
-            setEditedMovie({
-              id: null,
-              title: "",
-              imageUrl: "",
-              year: "",
-              description: "",
-              genre: null,
-              trailerVideo: "",
-            })
-          }}>X</button>
+          <button
+            className="close-modal"
+            onClick={() => {
+              setIsEditMovie(false);
+              setIsAddMovie(false);
+              setEditedMovie({
+                id: null,
+                title: "",
+                imageUrl: "",
+                year: "",
+                description: "",
+                genre: null,
+                trailerVideo: "",
+              });
+            }}
+          >
+            X
+          </button>
           <h2>{isEditMovie ? "Edit" : "Add"} Movie</h2>
           <input
             onInput={inputHandler}

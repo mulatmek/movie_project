@@ -13,8 +13,8 @@ const MovieDetails = () => {
     } catch (error) {}
   };
   useEffect(() => {
-    if(!movie.title){
-        getMovie(params.id);
+    if (!movie.title) {
+      getMovie(params.id);
     }
   });
   return (
