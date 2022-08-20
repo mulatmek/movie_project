@@ -7,6 +7,7 @@ import HomePage from "./views/HomePage";
 import UserMsg from "./components/UserMsg";
 import Dashboard from "./views/Dashboard";
 import AdminPage from "./views/AdminPage";
+import MovieDetails from "./views/MovieDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
           {/* <Route path="/**" element={<Dashboard />} /> */}
         </Routes>
         <UserMsg />

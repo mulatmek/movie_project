@@ -62,7 +62,7 @@ header nav > *:hover {
   text-decoration: underline;
 }
 
-.user-msg{
+.user-msg {
   position: fixed;
   top: 70px;
   left: 10px;
@@ -107,4 +107,50 @@ header nav > *:hover {
 .login-page .form-container span:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.admin-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-page ul {
+  width: 80vw;
+}
+
+.admin-page ul > * {
+  list-style: none;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  display: flex;
+}
+
+.admin-page ul li .actions {
+  align-self: end;
+}
+
+.add-movie-modal {
+  width: 320px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.close-modal {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }

@@ -46,9 +46,11 @@ const registerUser = (req, res) => {
       res.status(401).send("Password must match");
       res.render("register", { firstName, lastName, email });
     } else if (!strongRegex.test(password)) {
-      res.status(401).send(
-        "Password must contain at least 8 characters and 1 special letter"
-      );
+      res
+        .status(401)
+        .send(
+          "Password must contain at least 8 characters and 1 special letter"
+        );
     }
 
     //Validation
@@ -81,7 +83,7 @@ const registerUser = (req, res) => {
       });
     }
   } else {
-    res.status(401).send('Had an error registering')
+    res.status(401).send("Had an error registering");
   }
 };
 

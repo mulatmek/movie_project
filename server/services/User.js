@@ -1,39 +1,29 @@
-const User = require('../models/User');
+const User = require("../models/User");
 
 const countUsers = async () => {
-    return await User.countDocuments({});
-}
+  return await User.countDocuments({});
+};
 
-const getUserByName = (firstName, lastName) => {
-    return User.find({'firstName': firstName, 'lastName': lastName});
-}
+const getUserByName = async (firstName, lastName) => {
+  return await User.find({ firstName: firstName, lastName: lastName });
+};
 
-const getUserByEmail = (email) => {
-    return User.find({'email': email});
-}
+const getUserByEmail = async (email) => {
+  return await User.find({ email: email });
+};
 
-const updateUser = (email, body) => {
-    const user = getUserByEmail(email);
-    if (!user.length)
-        return null;
-
-    user.firstName = body.firstName;
-    user.lastName = body.lastName;
-    user.email = body.email;
-    user.isAdmin = body.isAdmin;
-
-    user.save();
-    return user;
+const updateUser = async (email, body) => {
+  return await User.findOneAndUpdate({ email }, body);
 };
 
 const deleteUser = async (email) => {
-    return await User.findOneAndDelete({'email': email});
-}
+  return await User.findOneAndDelete({ email: email });
+};
 
 module.exports = {
-    countUsers,
-    getUserByName,
-    getUserByEmail,
-    updateUser,
-    deleteUser,
-}
+  countUsers,
+  getUserByName,
+  getUserByEmail,
+  updateUser,
+  deleteUser,
+};
