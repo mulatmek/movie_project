@@ -160,7 +160,9 @@ const AdminPage = () => {
             <option value="comedy">Comedy</option>
             <option value="horror">Horror</option>
             <option value="drama">Drama</option>
+            <option value="romance">Romance</option>
             <option value="sci-fi">Science Fiction</option>
+            <option value="fantasy">Fantasy</option>
           </select>
           <button onClick={handleSave}>Save</button>
         </div>

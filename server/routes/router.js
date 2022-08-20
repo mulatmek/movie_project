@@ -12,17 +12,27 @@ const {
   addMovie,
   editMovie,
   getMovieById,
+  countMovies,
 } = require("../controllers/databaseController");
+const {
+  getUsers,
+  countUsers
+} = require("../controllers/userController");
 
 const router = express.Router();
 
 //movies routes
-router.post("/add-movie", [movieValidation], addMovie);
-router.put("/edit-movie", [movieValidation], editMovie);
+router.post("/add-movie", movieValidation(), addMovie);
+router.put("/edit-movie", movieValidation(), editMovie);
 router.get("/movie/:id", getMovieById);
 router.get("/movie", getMovies);
+router.get("/countMovies", countMovies);
 router.get("/countGenre", countByGenre);
 router.delete("/movie/:id", deleteMovie);
+
+//users routes
+router.get("/user", getUsers);
+router.get("/countUsers", countUsers);
 
 //loginController routes
 router.post("/login", loginUser);

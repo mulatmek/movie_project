@@ -1,12 +1,20 @@
 const MovieServices = require("../services/Movie");
 const { body, validationResult } = require("express-validator");
-const movieValidation = body("title")
-  .isLength({ min: 1 })
-  .withMessage("Movie title cannot be empty");
+
+function movieValidation() {
+  return [
+    body("title")
+      .isLength({ min: 1 })
+      .withMessage("Movie title cannot be empty"),
+    body("genre")
+      .isLength({ min: 1 })
+      .withMessage("Movie genre cannot be empty")
+  ];
+}
 
 const addMovie = async (req, res) => {
   try {
-    const errors = validationResult(req);
+    const errors = validationResult(req); //running movievalidation validator
     if (errors.isEmpty()) {
       await MovieServices.createMovie(req.body);
       res.send("ok");
@@ -20,7 +28,7 @@ const addMovie = async (req, res) => {
 
 const editMovie = async (req, res) => {
   try {
-    const errors = validationResult(req);
+    const errors = validationResult(req); //running movievalidation validator
     if (errors.isEmpty()) {
       const movieToUpdate = req.body;
       const { id } = movieToUpdate; //Extracting the id out of the body that I will be able to send it to the update function, and then deleting it from the body that it won't cause issues
@@ -60,6 +68,15 @@ const countByGenre = async (req, res) => {
   }
 };
 
+const countMovies = async (req, res) => {
+  try {
+    const result = await MovieServices.countMovies();
+    res.send({ "countMovies": result });
+  } catch (e) {
+    res.status(401).send("Error");
+  }
+};
+
 const deleteMovie = async (req, res) => {
   try {
     const { id } = req.params;
@@ -78,4 +95,5 @@ module.exports = {
   addMovie,
   editMovie,
   getMovieById,
+  countMovies,
 };

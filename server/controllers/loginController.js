@@ -31,7 +31,7 @@ function registerValidation() {
 
 //Post Request that handles Register
 const registerUser = (req, res) => {
-  const errors = validationResult(req);
+  const errors = validationResult(req); //running registervalidation validator
   if (errors.isEmpty()) {
     const { firstName, lastName, email, password, confirm } = req.body;
     const strongRegex = new RegExp(

@@ -4,6 +4,10 @@ const countUsers = async () => {
   return await User.countDocuments({});
 };
 
+const getUsers = async () => {
+  return await User.find({});
+};
+
 const getUserByName = async (firstName, lastName) => {
   return await User.find({ firstName: firstName, lastName: lastName });
 };
@@ -22,6 +26,7 @@ const deleteUser = async (email) => {
 
 module.exports = {
   countUsers,
+  getUsers,
   getUserByName,
   getUserByEmail,
   updateUser,
