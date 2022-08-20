@@ -19,7 +19,7 @@ const Login = () => {
   useEffect(() => {
     if (ctx.user) navigate("/dashboard");
   });
-  
+
   const submitHandler = async (e) => {
     try {
       e.preventDefault();
@@ -44,7 +44,7 @@ const Login = () => {
         }
       }
     } catch (e) {
-      ctx.setUserMsg(e.response.data)
+      ctx.setUserMsg(e.response.data);
     }
   };
 
