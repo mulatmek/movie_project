@@ -23,7 +23,6 @@ const AdminPage = () => {
 
   const getMovies = async () => {
     const result = await movieService.getMovieList();
-    console.log(result);
     setMovies(result);
   };
 
