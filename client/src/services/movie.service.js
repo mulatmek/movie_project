@@ -7,6 +7,14 @@ const getMovieList = async () => {
   } catch (err) {}
 };
 
+const getCountByGenre = async () => {
+  try {
+    const res = await axios.get("http://localhost:8080/countGenre");
+    return res.data;
+  } catch (err) {}
+};
+
 export const movieService = {
   getMovieList,
+  getCountByGenre,
 };
