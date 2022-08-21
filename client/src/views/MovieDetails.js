@@ -24,7 +24,14 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-page">
-      <h1>{movie.title}</h1>
+      <h1 class="movie-information-name">{movie.title}</h1>
+      <img  class="movie-picture" src={movie.imageUrl} alt="movie poster" />
+      <h3 class="movie-information"> Premier in {movie.year}</h3>
+      <h3 class="movie-information"> {movie.description}</h3>
+
+
+
+
     </div>
   );
 };
