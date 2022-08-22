@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { movieService } from "../services/movie.service";
 import { userService } from "../services/user.service";
 import { Link } from "react-router-dom";
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></link>
 
 const HomePage = () => {
   const [countMovies, setCountMovies] = useState(null);
@@ -49,10 +50,25 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <div className="totalUsers">
-        There are {countUsers} registered users in our website!
+        <div>
+          <il>
+          <ul>
+            {movies.length &&
+              movies.map((movie) => (
+                <li key={movie.id}>
+                  <img
+                class="movie-picture"
+                src={movie.imageUrl}
+                alt="movie poster"
+              />
+                  <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                </li>
+              ))}
+          </ul>
+          </il>
       </div>
-      <div className="totalMovies">
+        <p> There are {countUsers} registered users in our website!</p>
+        <div className="totalMovies">
         <p>There are {countMovies} movies in our website!</p>
       </div>
       <div className="CountByGenre">
@@ -62,18 +78,7 @@ const HomePage = () => {
               Genre: {item._id.genre}, number of movies: {item.count}
             </p>
           ))}
-
-        <div>
-          <ul>
-            {movies.length &&
-              movies.map((movie) => (
-                <li key={movie.id}>
-                  <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-                </li>
-              ))}
-          </ul>
         </div>
-      </div>
     </div>
   );
 };
