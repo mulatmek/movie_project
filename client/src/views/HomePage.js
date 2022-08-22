@@ -8,11 +8,22 @@ const HomePage = () => {
   const [countMovies, setCountMovies] = useState(null);
   const [countUsers, setCountUsers] = useState(null);
   const [countBy, setCount] = useState([]);
+  const [movies, setMovies] = useState([]);
+  
+
+  const getMovies = async () => {
+    const result = await movieService.getMovieList();
+    setMovies(result);
+  };
 
   useEffect(() => {
     const getCountByGenre = async () => {
       const result = await movieService.getCountByGenre();
       setCount(result);
+      
+      if (!movies.length) {
+        getMovies();
+      }
     };
 
     const getCountMovies = async () => {
@@ -55,6 +66,18 @@ const HomePage = () => {
               Genre: {item._id.genre}, number of movies: {item.count}
             </p>
           ))}
+
+           <div>
+          <ul>
+        {movies.length &&
+          movies.map((movie) => (
+            <li key={movie.id}>
+                <a href="/movie/32">{movie.title}</a>    
+             </li>
+          ))}
+      </ul>
+          </div>
+      
       </div>
     </div>
   );

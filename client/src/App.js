@@ -9,6 +9,7 @@ import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
 import AdminPage from "./views/AdminPage";
 import MovieDetails from "./views/MovieDetails";
+import ContactPage from "./views/Contact";
 import ErrorPage from "./views/ErrorPage";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/error" element={<ErrorPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <MainFooter />

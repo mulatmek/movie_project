@@ -5,6 +5,7 @@
 body {
   margin: 0;
   background-color: #66BFBF;
+  text-align: center;
 }
 
 #root {
@@ -126,6 +127,19 @@ header nav > *:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.contact-us{
+  margin: 100px;
+  }
+  
+  .email {
+    background: rgb(67, 67, 211);;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
 
 .admin-page {
   margin-top: 50px;
