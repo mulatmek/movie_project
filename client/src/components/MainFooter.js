@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-
 const MainHeader = () => {
   return (
-    <header>
+    <header class="footer">
       <nav>
         This website is developed and designed by Aviv, Stav, Oriya, Mulat and Itay ®
       </nav>

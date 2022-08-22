@@ -5,6 +5,14 @@ import { Context } from "../context";
 
 import { movieService } from "../services/movie.service";
 
+//Bootstarp addition to css
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+></link>;
+
 const AdminPage = () => {
   const ctx = useContext(Context);
   const [movies, setMovies] = useState([]);
@@ -75,16 +83,32 @@ const AdminPage = () => {
 
   return (
     <div className="admin-page">
-      <button onClick={() => setIsAddMovie(true)}>Add movie</button>
+      <button
+        id="button"
+        class="add-movie-button"
+        onClick={() => setIsAddMovie(true)}
+      >
+        Add movie
+      </button>
       <ul>
         {movies.length &&
           movies.map((movie) => (
             <li key={movie.id}>
-              <img src={movie.imageUrl} alt="movie poster" />
-              <h4>{movie.title}</h4>
+              <img
+                class="movie-picture"
+                src={movie.imageUrl}
+                alt="movie poster"
+              />
+              <h4 class="movie-name">{movie.title}</h4>
               <div className="actions">
-                <button onClick={() => deleteMovie(movie.id)}>Delete</button>
                 <button
+                  id="delete-button"
+                  onClick={() => deleteMovie(movie.id)}
+                >
+                  Delete
+                </button>
+                <button
+                  id="edit-button"
                   onClick={() => {
                     setIsEditMovie(true);
                     setEditedMovie(movie);
