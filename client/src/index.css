@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-color: #66BFBF;
+  background-color: #66bfbf;
   text-align: center;
 }
 
@@ -30,12 +30,11 @@ a {
   color: white;
 }
 
-.logout{
+.logout {
   color: white;
 }
 
-
-a:hover{
+a:hover {
   color: red;
 }
 
@@ -63,7 +62,6 @@ header nav {
   flex: 1;
   justify-content: space-around;
   align-items: center;
-  
 }
 
 header nav > * {
@@ -91,7 +89,6 @@ header nav > *:hover {
 .movie-page,
 .home-page,
 .login-page {
-  
   display: grid;
   place-items: center;
 }
@@ -100,7 +97,7 @@ header nav > *:hover {
   margin-top: 150px;
   text-align: center;
   padding: 40px 20px;
-  border: 1px solid #add8e6;
+  border: 1px solid white;
   border-radius: 8px;
   width: 320px;
   box-shadow: 10 10 100px yellow;
@@ -128,18 +125,18 @@ header nav > *:hover {
   cursor: pointer;
 }
 
-.contact-us{
+.contact-us {
   margin: 100px;
-  }
-  
-  .email {
-    background: rgb(67, 67, 211);;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-  }
+}
+
+.email {
+  background: rgb(67, 67, 211);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
 
 .admin-page {
   margin-top: 50px;
@@ -150,15 +147,14 @@ header nav > *:hover {
   align-items: center;
 }
 
-.movie-name{
+.movie-name {
   margin-top: 40px;
   padding-left: 20px;
   margin-right: 400px;
 }
 
-.add-movie-button{
+.add-movie-button {
   margin: 40px;
-
 }
 
 .admin-page ul {
@@ -213,25 +209,25 @@ header nav > *:hover {
   display: flex;
 }
 
-#edit-button{
+/* #edit-button{
   
-}
-#delete-button{
-margin-bottom: 50px;
+} */
+
+#delete-button {
+  margin-bottom: 50px;
 }
 
-.home-page{
+.home-page {
   margin-top: 100px;
 }
-.movie-information-name{
-margin: 150px;
-color: blue;
-text-shadow: 2px 2px 10px yellow
-
+.movie-information-name {
+  margin: 150px;
+  color: blue;
+  text-shadow: 2px 2px 10px yellow;
 }
 
-.footer{
-position: fixed;
-color: white;
-bottom: 0;
+.footer {
+  position: fixed;
+  color: white;
+  bottom: 0;
 }
