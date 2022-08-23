@@ -11,18 +11,19 @@ const MainHeader = () => {
 
   return (
     <header>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></link>
       <img
         src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
         alt="Logo"
       />
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About Us</Link>
-        <Link to="/contact">Contact</Link>
-        {ctx.user && <Link to="/dashboard">Dashboard</Link>}
-        {ctx.user?.isAdmin && <Link to="/admin">Admin Page</Link>}
+        <Link class="manu" to="/">Home</Link>
+        <Link class="manu" to="/about">About Us</Link>
+        <Link class="manu" to="/contact">Contact</Link>
+        {ctx.user && <Link class="manu" to="/dashboard">Dashboard</Link>}
+        {ctx.user?.isAdmin && <Link class="manu" to="/admin">Admin Page</Link>}
         {ctx.user && (
-          <span class="logout" onClick={logout}>
+          <span class="manu" onClick={logout}>
             Logout
           </span>
         )}

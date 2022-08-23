@@ -2,7 +2,6 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
-
 import { movieService } from "../services/movie.service";
 
 //Bootstarp addition to css
@@ -80,12 +79,10 @@ const AdminPage = () => {
       });
     } catch (e) {}
   };
-
   return (
-    <div className="admin-page">
-      <button
-        id="button"
-        class="add-movie-button"
+        <body className="admin-page">
+      <button type="button" class="btn btn-success"
+        id="add-button"
         onClick={() => setIsAddMovie(true)}
       >
         Add movie
@@ -101,13 +98,13 @@ const AdminPage = () => {
               />
               <h4 class="movie-name">{movie.title}</h4>
               <div className="actions">
-                <button
+                <button type="button" class="btn btn-danger"
                   id="delete-button"
                   onClick={() => deleteMovie(movie.id)}
                 >
                   Delete
                 </button>
-                <button
+                <button type="button" class="btn btn-primary"
                   id="edit-button"
                   onClick={() => {
                     setIsEditMovie(true);
@@ -122,8 +119,8 @@ const AdminPage = () => {
       </ul>
       {(isAddMovie || isEditMovie) && (
         <div className="add-movie-modal">
-          <button
-            className="close-modal"
+          <button type="button" class="btn btn-outline-danger"
+            id="close-modal"
             onClick={() => {
               setIsEditMovie(false);
               setIsAddMovie(false);
@@ -188,10 +185,10 @@ const AdminPage = () => {
             <option value="sci-fi">Science Fiction</option>
             <option value="fantasy">Fantasy</option>
           </select>
-          <button onClick={handleSave}>Save</button>
+          <button type="button" class="btn btn-outline-success" onClick={handleSave}>Save</button>
         </div>
       )}
-    </div>
+    </body>
   );
 };
 
