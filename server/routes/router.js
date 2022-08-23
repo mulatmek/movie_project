@@ -13,6 +13,7 @@ const {
   editMovie,
   getMovieById,
   countMovies,
+  rateMovie,
 } = require("../controllers/databaseController");
 const {
   getUsers,
@@ -24,6 +25,7 @@ const router = express.Router();
 //movies routes
 router.post("/add-movie", movieValidation(), addMovie);
 router.put("/edit-movie", movieValidation(), editMovie);
+router.put("/rate-movie", rateMovie);
 router.get("/movie/:id", getMovieById);
 router.get("/movie", getMovies);
 router.get("/countMovies", countMovies);

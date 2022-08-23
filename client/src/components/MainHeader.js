@@ -17,13 +17,13 @@ const MainHeader = () => {
         alt="Logo"
       />
       <nav>
-        <Link class="manu" to="/">Home</Link>
-        <Link class="manu" to="/about">About Us</Link>
-        <Link class="manu" to="/contact">Contact</Link>
-        {ctx.user && <Link class="manu" to="/dashboard">Dashboard</Link>}
-        {ctx.user?.isAdmin && <Link class="manu" to="/admin">Admin Page</Link>}
+        <Link className="manu" to="/">Home</Link>
+        <Link className="manu" to="/about">About Us</Link>
+        <Link className="manu" to="/contact">Contact</Link>
+        {ctx.user && <Link className="manu" to="/dashboard">Dashboard</Link>}
+        {ctx.user?.isAdmin && <Link className="manu" to="/admin">Admin Page</Link>}
         {ctx.user && (
-          <span class="manu" onClick={logout}>
+          <span className="manu" onClick={logout}>
             Logout
           </span>
         )}
