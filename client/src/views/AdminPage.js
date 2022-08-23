@@ -159,9 +159,10 @@ const AdminPage = () => {
             placeholder="Image Link"
             value={editedMovie.imageUrl}
           />
-          <input
+          <textarea
             onInput={inputHandler}
             name="description"
+            style={{fontSize: '12px', resize: 'none', height: '70px', width: '70%'}}
             type="text"
             placeholder="Description"
             value={editedMovie.description}

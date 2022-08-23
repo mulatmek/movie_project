@@ -9,6 +9,7 @@ const MovieSchema = new mongoose.Schema({
   description: { type: String },
   imageUrl: { type: String },
   trailerVideo: { type: String },
+  ratings: { type: Array }
   // reviews: [
   //     {
   //         type: mongoose.Schema.Types.ObjectId,

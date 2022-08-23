@@ -65,6 +65,27 @@ const updateMovie = async (id, body) => {
   return await Movie.findOneAndUpdate({ id }, body);
 };
 
+const rateMovie = async (rateData) => {
+  const movie = await Movie.findOne({ id: rateData.movieId });
+  const movieCopy = {...movie._doc}
+  const ratingToAdd = {
+    userEmail: rateData.userEmail,
+    rate: rateData.rate / 20,
+  };
+
+  if (!movieCopy.ratings?.length) {
+    movieCopy.ratings = [ratingToAdd];
+  } else {
+    const existingRateByUserIdx = movieCopy.ratings.findIndex(
+      (rating) => rating.userEmail === rateData.userEmail
+    );
+    existingRateByUserIdx === -1
+      ? movieCopy.ratings.push(ratingToAdd)
+      : (movieCopy.ratings[existingRateByUserIdx] = ratingToAdd);
+  }
+  await Movie.findOneAndUpdate({id: movieCopy.id}, movieCopy)
+};
+
 module.exports = {
   createMovie,
   getMovies,
@@ -75,4 +96,5 @@ module.exports = {
   countMovies,
   countByGenre,
   updateMovie,
+  rateMovie,
 };

@@ -1,11 +1,11 @@
-const MainHeader = () => {
+const MainFooter = () => {
   return (
-    <header class="footer">
+    <footer className="footer">
       <nav>
         This website is developed and designed by Aviv, Stav, Oriya, Mulat and Itay ®
       </nav>
-    </header>
+    </footer>
   );
 };
 
-export default MainHeader;
+export default MainFooter;

@@ -31,6 +31,15 @@ header {
   padding: 10px;
 }
 
+footer {
+  background-color: rgb(67, 67, 211);
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
 header img {
   width: 35px;
 }
@@ -62,7 +71,6 @@ header nav > *:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px #000;
 }
-
 
 .login-page .form-container {
   margin-top: 150px;
@@ -110,7 +118,7 @@ header nav > *:hover {
 }
 
 .admin-page {
-  background-color:rgb(255, 237, 219);
+  background-color: rgb(255, 237, 219);
   margin-top: 50px;
   flex: 1;
   display: flex;
@@ -167,9 +175,8 @@ header nav > *:hover {
   top: 10px;
 }
 
-
 .dashboard-page {
-  background-color:rgb(255, 237, 219);
+  background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -182,11 +189,10 @@ header nav > *:hover {
   padding: 5px;
 }
 
- #edit-button{
+#edit-button {
   position: absolute;
   right: 180px;
-  
-} 
+}
 
 #delete-button {
   cursor: pointer;
@@ -194,39 +200,27 @@ header nav > *:hover {
   right: 100px;
 }
 
-.actions{
+.actions {
   margin-bottom: 100px;
 }
 
 .movie-information-name {
-  margin: 150px;
+  margin-top: 100px;
   color: blue;
   text-shadow: 2px 2px 10px red;
 }
 
-.movie-page{
-  background-color:rgb(255, 237, 219);
+.movie-page {
+  background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
-.contact-page{
-  background-color:rgb(255, 237, 219);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: grid;
-  place-items: center;
-}
-
-.error-page{
-  background-color:rgb(255, 237, 219);
+.contact-page {
+  background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -236,8 +230,8 @@ header nav > *:hover {
   place-items: center;
 }
 
-.login-page{
-  background-color:rgb(255, 237, 219);
+.error-page {
+  background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -247,20 +241,48 @@ header nav > *:hover {
   place-items: center;
 }
 
-.home-page{
+.login-page {
+  background-color: rgb(255, 237, 219);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  place-items: center;
+}
+
+.home-page {
   background-image: url("netflix.jpg");
-  color:gold;
+  color: gold;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: grid;
-  place-items: center;
   padding-top: 100px;
 }
 
-.footer {
+.movie-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.movie-preview img {
+  max-width: 200px;
+}
+
+.movie-preview a {
   color: white;
-  bottom: 0;
+  font-weight: bold;
+}
+
+.stats {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  padding: 10px;
 }

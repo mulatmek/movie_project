@@ -41,6 +41,15 @@ const editMovie = async (req, res) => {
   }
 };
 
+const rateMovie = async (req,res) => {
+  try {
+    await MovieServices.rateMovie(req.body)
+    res.send('ok')
+  } catch (e) {
+    res.status(401).send("Error");
+  }
+}
+
 const getMovieById = async (req, res) => {
   try {
     const movieDetails = await MovieServices.getMovieById(req.params.id);
@@ -96,4 +105,5 @@ module.exports = {
   editMovie,
   getMovieById,
   countMovies,
+  rateMovie
 };
