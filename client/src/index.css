@@ -24,6 +24,7 @@ input {
 
 header {
   position: fixed;
+  z-index: 999;
   display: flex;
   width: 100%;
   background-color: rgb(67, 67, 211);
@@ -197,9 +198,6 @@ header nav > *:hover {
   margin-bottom: 100px;
 }
 
-.home-page {
-  margin-top: 100px;
-}
 .movie-information-name {
   margin: 150px;
   color: blue;
@@ -259,6 +257,7 @@ header nav > *:hover {
   align-items: center;
   display: grid;
   place-items: center;
+  padding-top: 100px;
 }
 
 .footer {
