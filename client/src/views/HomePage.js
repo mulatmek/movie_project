@@ -67,7 +67,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <input
+      <input id = "search"
         onInput={inputHandler}
         type="text"
         placeholder="Search"

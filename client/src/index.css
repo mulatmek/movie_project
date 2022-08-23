@@ -269,11 +269,17 @@ header nav > *:hover {
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  border-radius: 20%;
 }
 
 .movie-preview img {
-  max-width: 200px;
+  max-width: 300px;
+  border-radius: 15%;
 }
+.movie-preview  :hover {
+  width: 300px;
+}
+
 
 .movie-preview a {
   color: white;
@@ -285,4 +291,11 @@ header nav > *:hover {
   top: 100px;
   left: 0;
   padding: 10px;
+}
+
+#search{
+  border-radius: 10%;
+  width: 400px;
+  color: red;
+  margin-bottom: 10px;
 }
