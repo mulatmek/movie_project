@@ -24,11 +24,21 @@ const HomePage = () => {
     setFilteredMovies(result);
   };
 
-  const inputHandler = (e) => {
+  const inputHandlerBytitle = (e) => {
     setFilter(e.target.value);
     setFilteredMovies(
       movies.filter((movie) => {
+
         return movie.title.toLowerCase().includes(e.target.value.toLowerCase());
+      })
+    );
+  };
+  const inputHandlerBygenre = (e) => {
+    setFilter(e.target.value);
+    setFilteredMovies(
+      movies.filter((movie) => {
+
+        return movie.genre.toLowerCase().includes(e.target.value.toLowerCase());
       })
     );
   };
@@ -68,10 +78,22 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+        <select  id ="genreButton" value={filteredMovies} onInput={inputHandlerBygenre} name="genre">
+            <option >
+              Select Genre
+            </option>
+            <option value="Action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="horror">Horror</option>
+            <option value="drama">Drama</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Science Fiction</option>
+            <option value="fantasy">Fantasy</option>
+          </select>
       <input id="search"
-        onInput={inputHandler}
+        onInput={inputHandlerBytitle}
         type="text"
-        placeholder="Search"
+        placeholder="Search By Title"
         value={filter}
       />
       <div>
