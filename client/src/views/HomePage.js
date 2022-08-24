@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
   rel="stylesheet"
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-  crossorigin="anonymous"
+  crossOrigin="anonymous"
 ></link>;
 
 const HomePage = () => {
@@ -68,7 +68,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <input
+      <input id="search"
         onInput={inputHandler}
         type="text"
         placeholder="Search"
@@ -76,21 +76,21 @@ const HomePage = () => {
       />
       <div>
         <ul>
-          {filteredMovies.length &&
+          {(filteredMovies.length &&
             filteredMovies.map((movie) => (
               <li key={movie.id} className="movie-preview">
+                <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
                 <img
                   className="movie-picture"
                   src={movie.imageUrl}
                   alt="movie poster"
-                />
-                <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                  />
               </li>
-            )) || <div>No matched movies</div>}
+            ))) || <div>No matched movies</div>}
         </ul>
       </div>
       <div className="stats">
-        <p> There are {countUsers} registered users in our website!</p>
+        <p>There are {countUsers} registered users in our website!</p>
         <p>There are {countMovies} movies in our website!</p>
         {countBy.length &&
           countBy.map((item) => (

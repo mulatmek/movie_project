@@ -272,7 +272,12 @@ header nav > *:hover {
 }
 
 .movie-preview img {
-  max-width: 200px;
+  max-width: 300px;
+  border-radius: 10%;
+}
+
+.movie-picture :hover {
+  width: 250px;
 }
 
 .movie-preview a {
