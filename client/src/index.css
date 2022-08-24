@@ -12,7 +12,7 @@
 }
 
 .menu:hover {
-  color: red;
+  color: rgb(128, 120, 120);
 }
 
 input {
@@ -20,6 +20,7 @@ input {
   border-bottom: 1px solid rgb(131, 131, 131);
   outline: none;
   padding: 5px;
+  
 }
 
 header {
@@ -27,12 +28,12 @@ header {
   z-index: 999;
   display: flex;
   width: 100%;
-  background-color: rgb(67, 67, 211);
+  background-color: black;
   padding: 10px;
 }
 
 footer {
-  background-color: rgb(67, 67, 211);
+  background-color: black;
   display: flex;
   color: white;
   align-items: center;
@@ -115,6 +116,10 @@ header nav > *:hover {
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  margin-bottom: 10px;
+}
+.btn{
+  margin-bottom: 10px;
 }
 
 .admin-page {
@@ -220,6 +225,7 @@ header nav > *:hover {
 }
 
 .contact-page {
+  /* background-image: url("netflix.jpg"); */
   background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
@@ -290,4 +296,16 @@ header nav > *:hover {
   top: 100px;
   left: 0;
   padding: 10px;
+}
+
+#search{
+  margin-bottom: 40px;
+  text-align: center;
+  width: 300px;
+}
+.map-container{
+  width:  80%;
+  height:  80vh;
+  margin-bottom: 20px;
+  border-radius: 5%;
 }
