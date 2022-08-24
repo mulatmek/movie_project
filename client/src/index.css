@@ -20,6 +20,7 @@ input {
   border-bottom: 1px solid rgb(131, 131, 131);
   outline: none;
   padding: 5px;
+  
 }
 
 header {
@@ -102,19 +103,6 @@ header nav > *:hover {
 .login-page .form-container span:hover {
   text-decoration: underline;
   cursor: pointer;
-}
-
-.contact-us {
-  margin: 100px;
-}
-
-.email {
-  background: rgb(67, 67, 211);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
 }
 
 .admin-page {
@@ -290,4 +278,10 @@ header nav > *:hover {
   top: 100px;
   left: 0;
   padding: 10px;
+}
+
+#search{
+  margin-bottom: 40px;
+  text-align: center;
+  width: 300px;
 }

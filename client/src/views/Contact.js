@@ -1,9 +1,10 @@
 const Contact = () => {
   return (
     <body className="contact-page">
-      <h3 className="contact-us">get in touch with us</h3>
-      <a className="email" href="mailto:stav3434@gmail.com">
-        CONTACT US
+      <h5>Your favorite movie does'nt exsit?? </h5>
+      <h5>get in touch with us</h5>
+      <a  href="mailto:stav3434@gmail.com">
+      <button type="button" class="btn btn-lg btn-info"> Contact US</button>
       </a>
     </body>
   );
