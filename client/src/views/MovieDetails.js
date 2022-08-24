@@ -51,7 +51,7 @@ const MovieDetails = () => {
         {movie.ratings?.reduce(
           (previousValue, rate) => previousValue + rate.rate,
           0
-        ) / movie.ratings?.length}
+        ) / movie.ratings?.length || 0}
         <img style={{ width: "30px" }} src={starIcon} />
       </h2>
       <img className="movie-picture" src={movie.imageUrl} alt="movie poster" />
