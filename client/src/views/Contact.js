@@ -1,7 +1,7 @@
 import {useMemo} from "react";
 import {GoogleMap,useLoadScript,Marker} from "@react-google-maps/api"
 const Contact = () => {
-  const {isLoaded} = useLoadScript({googleMapsApiKey:process.env.PUBLIC_GOOGLE_API_KEY,
+  const {isLoaded} = useLoadScript({googleMapsApiKey:"AIzaSyBhknKa5zlSLBrrVpiopBytfblhWUGIs50",
   });
   if(!isLoaded) return <div>Loading ...</div>
   return (

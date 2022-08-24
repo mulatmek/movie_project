@@ -299,7 +299,11 @@ header nav > *:hover {
 }
 
 #search{
-  margin-bottom: 40px;
+  position: absolute;
+  top: 50px;
+  right: 350px;
+  height: 35px;
+  margin-bottom: 50px;
   text-align: center;
   width: 300px;
 }
@@ -308,4 +312,13 @@ header nav > *:hover {
   height:  80vh;
   margin-bottom: 20px;
   border-radius: 5%;
+}
+.about{
+  margin-top: 200px;
+}
+#genreButton{
+  position: absolute;
+  top: 50px;
+  right: 220px;
+  height: 35px;
 }
