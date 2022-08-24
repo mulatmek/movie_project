@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
 import { movieService } from "../services/movie.service";
+import { Link } from "react-router-dom";
 
 //Bootstarp addition to css
 <link
@@ -80,8 +81,10 @@ const AdminPage = () => {
     } catch (e) {}
   };
   return (
-        <body className="admin-page">
-      <button type="button" class="btn btn-success"
+    <body className="admin-page">
+      <button
+        type="button"
+        className="btn btn-success"
         id="add-button"
         onClick={() => setIsAddMovie(true)}
       >
@@ -92,19 +95,25 @@ const AdminPage = () => {
           movies.map((movie) => (
             <li key={movie.id}>
               <img
-                class="movie-picture"
+                className="movie-picture"
                 src={movie.imageUrl}
                 alt="movie poster"
               />
-              <h4 class="movie-name">{movie.title}</h4>
+              <h4 className="movie-picture">
+                <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+              </h4>
               <div className="actions">
-                <button type="button" class="btn btn-danger"
+                <button
+                  type="button"
+                  className="btn btn-danger"
                   id="delete-button"
                   onClick={() => deleteMovie(movie.id)}
                 >
                   Delete
                 </button>
-                <button type="button" class="btn btn-primary"
+                <button
+                  type="button"
+                  className="btn btn-primary"
                   id="edit-button"
                   onClick={() => {
                     setIsEditMovie(true);
@@ -119,7 +128,9 @@ const AdminPage = () => {
       </ul>
       {(isAddMovie || isEditMovie) && (
         <div className="add-movie-modal">
-          <button type="button" class="btn btn-outline-danger"
+          <button
+            type="button"
+            className="btn btn-outline-danger"
             id="close-modal"
             onClick={() => {
               setIsEditMovie(false);
@@ -162,7 +173,12 @@ const AdminPage = () => {
           <textarea
             onInput={inputHandler}
             name="description"
-            style={{fontSize: '12px', resize: 'none', height: '70px', width: '70%'}}
+            style={{
+              fontSize: "12px",
+              resize: "none",
+              height: "70px",
+              width: "70%",
+            }}
             type="text"
             placeholder="Description"
             value={editedMovie.description}
@@ -186,7 +202,13 @@ const AdminPage = () => {
             <option value="sci-fi">Science Fiction</option>
             <option value="fantasy">Fantasy</option>
           </select>
-          <button type="button" class="btn btn-outline-success" onClick={handleSave}>Save</button>
+          <button
+            type="button"
+            className="btn btn-outline-success"
+            onClick={handleSave}
+          >
+            Save
+          </button>
         </div>
       )}
     </body>

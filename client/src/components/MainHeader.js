@@ -11,23 +11,46 @@ const MainHeader = () => {
 
   return (
     <header>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></link>
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossOrigin="anonymous"
+      ></link>
       <img
         src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
         alt="Logo"
       />
       <nav>
-        <Link className="manu" to="/">Home</Link>
-        <Link className="manu" to="/about">About Us</Link>
-        <Link className="manu" to="/contact">Contact</Link>
-        {ctx.user && <Link className="manu" to="/dashboard">Dashboard</Link>}
-        {ctx.user?.isAdmin && <Link className="manu" to="/admin">Admin Page</Link>}
+        <Link className="menu" to="/">
+          Home
+        </Link>
+        <Link className="menu" to="/about">
+          About Us
+        </Link>
+        <Link className="menu" to="/contact">
+          Contact
+        </Link>
         {ctx.user && (
-          <span className="manu" onClick={logout}>
+          <Link className="menu" to="/dashboard">
+            Dashboard
+          </Link>
+        )}
+        {ctx.user?.isAdmin && (
+          <Link className="menu" to="/admin">
+            Admin Page
+          </Link>
+        )}
+        {ctx.user && (
+          <span className="menu" onClick={logout}>
             Logout
           </span>
         )}
-        {!ctx.user && <Link to="/login">Login</Link>}
+        {!ctx.user && (
+          <Link to="/login" className="menu">
+            Login
+          </Link>
+        )}
       </nav>
     </header>
   );

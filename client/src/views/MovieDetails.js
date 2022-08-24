@@ -17,7 +17,7 @@ const MovieDetails = () => {
       const res = await axios.get(`http://localhost:8080/movie/${movieId}`);
       if (!res.data) navigate("/error");
       const userRating = res.data.ratings.find(
-        (rate) => rate.userEmail === ctx.user.email
+        (rate) => rate.userEmail === ctx.user?.email
       )?.rate;
       if (userRating) setRating(userRating * 20);
       setMovie(res.data);
@@ -51,19 +51,32 @@ const MovieDetails = () => {
         {movie.ratings?.reduce(
           (previousValue, rate) => previousValue + rate.rate,
           0
-        ) / movie.ratings?.length} 
-        <img style={{width: '30px'}} src={starIcon} />
+        ) / movie.ratings?.length}
+        <img style={{ width: "30px" }} src={starIcon} />
       </h2>
       <img className="movie-picture" src={movie.imageUrl} alt="movie poster" />
       <h3 className="movie-information"> Premier in {movie.year}</h3>
-      <h3 className="movie-information"> {movie.description}</h3>
+      <h3 className="movie-information"> {movie.genre}: </h3>
+      <p className="movie-information">{movie.description}</p>
       <Rating
         onClick={handleRating}
         ratingValue={rating}
         allowHalfIcon
         transition
-        style={{marginBottom: '20px'}}
+        style={{ marginBottom: "20px" }}
       />
+      {movie.trailerVideo && (
+        <iframe
+          width="420"
+          height="315"
+          src={movie.trailerVideo}
+          title={movie.title}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
+      <br></br>
     </div>
   );
 };

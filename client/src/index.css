@@ -7,11 +7,11 @@
   flex-direction: column;
 }
 
-.manu {
+.menu {
   color: white;
 }
 
-.manu:hover {
+.menu:hover {
   color: red;
 }
 

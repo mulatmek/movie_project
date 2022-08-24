@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { movieService } from "../services/movie.service";
 import { userService } from "../services/user.service";
 import { Link } from "react-router-dom";
+
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
   rel="stylesheet"
