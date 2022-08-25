@@ -274,6 +274,8 @@ header nav > *:hover {
 
 .about-information{
   column-count: 2;
+  margin-left:40px;
+  margin-right:40px;
 }
 .home-page {
   background-image: url("netflix.jpg");
