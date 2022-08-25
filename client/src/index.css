@@ -298,11 +298,17 @@ header nav > *:hover {
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  transition: width 2s, height 2s, transform 2s;
 }
 
+
+.movie-preview:hover {
+ transform: rotate(360deg);
+}
 .movie-preview img {
   max-width: 300px;
   border-radius: 10%;
+
 }
 
 .movie-picture :hover {
@@ -319,6 +325,9 @@ header nav > *:hover {
   top: 100px;
   left: 0;
   padding: 10px;
+  color: rgb(175, 180, 180);
+  text-shadow: #ffffff;
+  margin-top: 20px;
 }
 
 #search{
