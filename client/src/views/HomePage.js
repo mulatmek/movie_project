@@ -43,6 +43,17 @@ const HomePage = () => {
     );
   };
 
+
+  const inputHandlerByYear = (e) => {
+    setFilter(e.target.value);
+    setFilteredMovies(
+      movies.filter((movie) => {
+
+        return movie.year > (e.target.value);
+      })
+    );
+  };
+
   useEffect(() => {
     const getCountByGenre = async () => {
       const result = await movieService.getCountByGenre();
@@ -78,18 +89,32 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-        <select  id ="genreButton" value={filteredMovies} onInput={inputHandlerBygenre} name="genre">
-            <option >
-              Select Genre
-            </option>
-            <option value="Action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="horror">Horror</option>
-            <option value="drama">Drama</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Science Fiction</option>
-            <option value="fantasy">Fantasy</option>
-          </select>
+      <select id="genreButton" value={filteredMovies} onInput={inputHandlerBygenre} name="genre">
+        <option >
+          Select Genre
+        </option>
+        <option value="Action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="horror">Horror</option>
+        <option value="drama">Drama</option>
+        <option value="romance">Romance</option>
+        <option value="sci-fi">Science Fiction</option>
+        <option value="fantasy">Fantasy</option>
+      </select>
+
+      <select id="yearButton" value={filteredMovies} onInput={inputHandlerByYear} name="year">
+        <option >
+          Select year
+        </option>
+        <option value="1980">1980+</option>
+        <option value="1990">1990+</option>
+        <option value="2000">2000+</option>
+        <option value="2010">2010+</option>
+        <option value="2020">2020+</option>
+      </select>
+
+
+
       <input id="search"
         onInput={inputHandlerBytitle}
         type="text"
@@ -106,7 +131,7 @@ const HomePage = () => {
                   className="movie-picture"
                   src={movie.imageUrl}
                   alt="movie poster"
-                  />
+                />
               </li>
             ))) || <div>No matched movies</div>}
         </ul>

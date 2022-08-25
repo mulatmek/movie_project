@@ -48,7 +48,7 @@ const AdminPage = () => {
       if (ok) {
         getMovies();
       }
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const inputHandler = (e) => {
@@ -78,7 +78,7 @@ const AdminPage = () => {
         genre: null,
         trailerVideo: "",
       });
-    } catch (e) {}
+    } catch (e) { }
   };
   return (
     <body className="admin-page">
@@ -122,6 +122,7 @@ const AdminPage = () => {
                 >
                   Edit
                 </button>
+
               </div>
             </li>
           ))}

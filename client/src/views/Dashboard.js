@@ -11,10 +11,10 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      <h2 class="dash-title">Hello!</h2>
+      <h2 className="dash-title">Hello!</h2>
       <ul>
         <li>
-          <h4 class="dash-title" >You are logged in with the following details:</h4>
+          <h4 className="dash-title" >You are logged in with the following details:</h4>
         </li>
         <li className="dash-infromation" > First Name: {ctx.user?.firstName} </li>
         <li className="dash-infromation" > Last Name: {ctx.user?.lastName} </li>

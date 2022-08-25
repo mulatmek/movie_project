@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 #root {
   min-height: 100vh;
   display: flex;
@@ -20,7 +21,7 @@ input {
   border-bottom: 1px solid rgb(131, 131, 131);
   outline: none;
   padding: 5px;
-  
+
 }
 
 header {
@@ -52,13 +53,13 @@ header nav {
   align-items: center;
 }
 
-header nav > * {
+header nav>* {
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
 }
 
-header nav > *:hover {
+header nav>*:hover {
   text-decoration: underline;
 }
 
@@ -96,6 +97,7 @@ header nav > *:hover {
   display: flex;
   align-items: center;
 }
+
 .login-page .form-container form label span:hover {
   text-decoration: none;
 }
@@ -118,7 +120,8 @@ header nav > *:hover {
   text-decoration: none;
   margin-bottom: 10px;
 }
-.btn{
+
+.btn {
   margin-bottom: 10px;
 }
 
@@ -146,7 +149,7 @@ header nav > *:hover {
   width: 80vw;
 }
 
-.admin-page ul > * {
+.admin-page ul>* {
   list-style: none;
   padding: 5px;
   border-bottom: 1px solid black;
@@ -189,7 +192,7 @@ header nav > *:hover {
   align-items: center;
 }
 
-.dashboard-page ul > * {
+.dashboard-page ul>* {
   list-style: none;
   padding: 5px;
 }
@@ -214,7 +217,7 @@ header nav > *:hover {
   color: black;
   text-shadow: 2px 2px 10px gray;
   font-family: myFirstFont;
-  
+
 }
 
 .movie-page {
@@ -237,7 +240,8 @@ header nav > *:hover {
   display: grid;
   place-items: center;
 }
-.contact-us{
+
+.contact-us {
   font-family: 'Kaushan Script', cursive;
   text-align: center;
 }
@@ -264,7 +268,7 @@ header nav > *:hover {
   place-items: center;
 }
 
-.about-page{
+.about-page {
   background-color: rgb(255, 237, 219);
   flex: 1;
   display: flex;
@@ -276,11 +280,12 @@ header nav > *:hover {
   column-count: 3;
 }
 
-.about-information{
+.about-information {
   column-count: 2;
-  margin-left:40px;
-  margin-right:40px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
+
 .home-page {
   background-image: url("netflix.jpg");
   color: gold;
@@ -303,8 +308,9 @@ header nav > *:hover {
 
 
 .movie-preview:hover {
- transform: rotate(360deg);
+  transform: rotate(360deg);
 }
+
 .movie-preview img {
   max-width: 300px;
   border-radius: 10%;
@@ -325,39 +331,52 @@ header nav > *:hover {
   top: 100px;
   left: 0;
   padding: 10px;
-  color: rgb(175, 180, 180);
+  color: yellow;
   text-shadow: #ffffff;
   margin-top: 20px;
 }
 
-#search{
+#search {
   height: 35px;
   margin-bottom: 50px;
   text-align: center;
   width: 300px;
 }
-.map-container{
-  width:  80%;
-  height:  80vh;
+
+.map-container {
+  width: 80%;
+  height: 80vh;
   margin-bottom: 60px;
   border-radius: 5%;
 }
-.about{
+
+.about {
   margin-top: 200px;
 }
-#genreButton{
+
+#genreButton {
   top: 50px;
   right: 0px;
   height: 35px;
   text-align: center;
-  margin-bottom: 10PX;
+  size: 70px;
+  margin-bottom: 10px;
 }
 
-.dash-infromation{
+#yearButton {
+  top: 50px;
+  right: 0px;
+  height: 35px;
+  text-align: center;
+  size: 100px;
+  margin-bottom: 10px;
+}
+
+.dash-infromation {
   margin-top: 100px;
 }
 
-.dash-title{
+.dash-title {
 
   color: black;
   text-shadow: 2px 2px 10px gray;
