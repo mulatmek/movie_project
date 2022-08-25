@@ -11,7 +11,6 @@ import AdminPage from "./views/AdminPage";
 import MovieDetails from "./views/MovieDetails";
 import ContactPage from "./views/Contact";
 import ErrorPage from "./views/ErrorPage";
-import AboutUs from "./views/AboutUs"
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/about" element={<AboutUs />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <MainFooter />

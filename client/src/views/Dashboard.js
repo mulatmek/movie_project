@@ -16,9 +16,9 @@ const Dashboard = () => {
         <li>
           <h4>You are logged in with the following details:</h4>
         </li>
-        <li>First Name: {ctx.user?.firstName}</li>
-        <li>Last Name: {ctx.user?.lastName}</li>
-        <li>Email: {ctx.user?.email}</li>
+        <li className="dash-infromation" >First Name: {ctx.user?.firstName}</li>
+        <li className="dash-infromation">Last Name: {ctx.user?.lastName}</li>
+        <li className="dash-infromation">Email: {ctx.user?.email}</li>
       </ul>
     </div>
   );
