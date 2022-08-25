@@ -237,6 +237,10 @@ header nav > *:hover {
   display: grid;
   place-items: center;
 }
+.contact-us{
+  font-family: 'Kaushan Script', cursive;
+  text-align: center;
+}
 
 .error-page {
   background-color: rgb(255, 237, 219);
@@ -326,7 +330,7 @@ header nav > *:hover {
 .map-container{
   width:  80%;
   height:  80vh;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   border-radius: 5%;
 }
 .about{

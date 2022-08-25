@@ -17,6 +17,7 @@ const MainHeader = () => {
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossOrigin="anonymous"
       ></link>
+      <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"></link>
       <img
         src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
         alt="Logo"
